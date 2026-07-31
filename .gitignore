@@ -1,2 +1,3 @@
 data/
 src/generator/__pycache___
+*.pyc

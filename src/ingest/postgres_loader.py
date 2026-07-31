@@ -14,9 +14,12 @@ class PostgresLoader:
         sql = f"""
             INSERT INTO {table}
             ({", ".join(columns)})
-            VALUES ({placeholders}) # There will number of %s in the values part. (%s, %s, ...) They represent the rows.
+            VALUES ({placeholders}) 
         """
 
+
+        print(sql)
+        print(rows)
         with self.connection.cursor() as cursor:
             cursor.executemany(sql, rows)
             
@@ -88,3 +91,12 @@ class PostgresLoader:
         ]
 
         self.insert_many("order_items",["order_id","product_id","quantity","unit_price"],rows)
+
+
+    def __enter__(self):
+        self.connection = self.connection
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.connection:
+            self.connection.close()

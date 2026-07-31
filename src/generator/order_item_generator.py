@@ -1,5 +1,5 @@
 import random
-from base import BaseGenerator
+from src.generator.base import BaseGenerator
 
 
 class OrderItemGenerator(BaseGenerator):

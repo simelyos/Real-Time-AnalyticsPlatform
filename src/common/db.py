@@ -1,7 +1,7 @@
 import psycopg
 from psycopg.rows import dict_row
 
-from config import DB_CONFIG
+from src.common.config import DB_CONFIG
 
 
 def get_connection():

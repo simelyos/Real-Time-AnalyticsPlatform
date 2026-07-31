@@ -1,7 +1,7 @@
 import random
 from faker import Faker
 from datetime import datetime
-from base import BaseGenerator
+from src.generator.base import BaseGenerator
 
 class OrderGenerator(BaseGenerator):
 

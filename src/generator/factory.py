@@ -1,7 +1,7 @@
-from customer_generator import CustomerGenerator
-from product_generator import ProductGenerator
-from order_generator import OrderGenerator
-from order_item_generator import OrderItemGenerator
+from src.generator.customer_generator import CustomerGenerator
+from src.generator.product_generator import ProductGenerator
+from src.generator.order_generator import OrderGenerator
+from src.generator.order_item_generator import OrderItemGenerator
 
 
 class GeneratorFactory:
