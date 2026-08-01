@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-
+from src.models.base import BaseModel
 
 @dataclass(slots=True)
-class OrderItem:
+class OrderItem(BaseModel):
     order_id: int
     product_id: int
     quantity: int

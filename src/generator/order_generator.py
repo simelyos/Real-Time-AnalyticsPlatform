@@ -2,6 +2,8 @@ import random
 from faker import Faker
 from datetime import datetime
 from src.generator.base import BaseGenerator
+from src.models.order import Order
+
 
 class OrderGenerator(BaseGenerator):
 
@@ -43,13 +45,11 @@ class OrderGenerator(BaseGenerator):
                 status = random.choices(
                     [s for s, _ in self.ORDER_STATUSES], weights=[w for _, w in self.ORDER_STATUSES],k=1)[0]
 
-                orders.append({
-                    "customer_id": customer_id,
-                    "order_date": self.fake.date_time_between(
-                        start_date="-2y",
-                        end_date="now"
-                    ),
-                    "status": status
-                })
+                orders.append(
+                    Order
+                    (   
+                    customer_id=customer_id,
+                    order_date=self.fake.date_time_between(start_date="-2y",end_date="now"),
+                    status=status))
 
         return orders

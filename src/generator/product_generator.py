@@ -1,6 +1,8 @@
 from faker import Faker
 import random
 from src.generator.base import BaseGenerator
+from src.models.product import Product
+
 
 class ProductGenerator(BaseGenerator):
 
@@ -78,11 +80,9 @@ class ProductGenerator(BaseGenerator):
 
             price = round(base_price * (1 + price_variation), 2)
 
-            products.append({
-                "name": self.generate_product_name(base_name),
-                "category": category,
-                "price": price
-            })
+            products.append(Product(name=self.generate_product_name(base_name),
+                                    category=category,
+                                    price=price))
 
         return products
 

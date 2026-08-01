@@ -30,11 +30,11 @@ class PostgresLoader:
 
         rows = [
             (
-                c["first_name"],
-                c["last_name"],
-                c["email"],
-                c["country"],
-                c["created_at"]
+                c.first_name,
+                c.last_name,
+                c.email,
+                c.country,
+                c.created_at
             )
             for c in customers
         ]
@@ -55,9 +55,9 @@ class PostgresLoader:
 
         rows = [
             (
-                p["name"],
-                p["category"],
-                p["price"]
+               p.name,
+               p.category,
+               p.price
 
             )
             for p in products
@@ -69,9 +69,9 @@ class PostgresLoader:
 
         rows = [
             (
-                o["customer_id"],
-                o["order_date"],
-                o["status"]
+                o.customer_id,
+                o.order_date,
+                o.status
             )
             for o in orders
         ]
@@ -82,10 +82,10 @@ class PostgresLoader:
 
         rows = [
             (
-                od["order_id"],
-                od["product_id"],
-                od["quantity"],
-                od["unit_price"]
+                od.order_id,
+                od.product_id,
+                od.quantity,
+                od.unit_price
             )
             for od in order_items
         ]

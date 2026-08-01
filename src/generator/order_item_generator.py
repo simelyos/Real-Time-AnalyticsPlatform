@@ -1,6 +1,6 @@
 import random
 from src.generator.base import BaseGenerator
-
+from src.models.order_item import OrderItem
 
 class OrderItemGenerator(BaseGenerator):
 
@@ -70,17 +70,10 @@ class OrderItemGenerator(BaseGenerator):
 
             for product in selected_products:
 
-                items.append({
-
-                    "order_id": order["order_id"],
-
-                    "product_id": product["product_id"],
-
-                    "quantity": self.generate_quantity(
-                        product["category"]
-                    ),
-
-                    "unit_price": product["price"]
-                })
+                items.append(
+                    OrderItem(order_id=order["order_id"],
+                              product_id=product["product_id"],
+                              quantity=self.generate_quantity(product["category"]),
+                              unit_price=product["price"]))
 
         return items
