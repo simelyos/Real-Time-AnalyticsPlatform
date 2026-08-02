@@ -1,6 +1,8 @@
 from dataclasses import asdict
+from dataclasses import dataclass
 
 
+@dataclass
 class BaseModel:
 
     def to_dict(self):

@@ -38,7 +38,7 @@ class OrderGenerator(BaseGenerator):
 
         for customer_id in customer_ids:
 
-            order_count = self.generate_order_count(self)
+            order_count = self.generate_order_count()
 
             for _ in range(order_count):
 

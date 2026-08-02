@@ -18,17 +18,17 @@ class BaseRepository(ABC):
         )
 
         query = sql.SQL("""
-            INSERT INTO {table}
-            ({columns})
-            VALUES ({values})
-        """).format(
-            table=sql.Identifier(self.table_name),
-            columns=sql.SQL(", ").join(
-                map(sql.Identifier, self.columns)
-            ),
-            values=placeholders,
-        )
-
+                    INSERT INTO {table}
+                    ({columns})
+                    VALUES ({values})
+                """).format(
+                    table=sql.Identifier(self.table_name),
+                    columns=sql.SQL(", ").join(
+                        map(sql.Identifier, self.columns)
+                    ),
+                    values=placeholders,
+                )
+        
         with self.connection.cursor() as cursor:
             cursor.executemany(query, rows)
 
