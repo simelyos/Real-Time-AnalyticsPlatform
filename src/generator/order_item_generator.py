@@ -39,13 +39,13 @@ class OrderItemGenerator(BaseGenerator):
 
 
 
-    def generate(self,orders, products):
+    def generate(self,orders,products):
 
         items = []
 
         for order in orders:
 
-            item_count = self.generate_item_count(self)
+            item_count = self.generate_item_count()
 
             first_product = random.choice(products)
 

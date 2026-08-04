@@ -2,13 +2,16 @@ from src.generator.customer_generator import CustomerGenerator
 from src.generator.order_generator import OrderGenerator
 from src.generator.order_item_generator import OrderItemGenerator
 from src.generator.product_generator import ProductGenerator
+
 from src.repositories.customer_repository import CustomerRepository
 from src.repositories.order_repository import OrderRepository
 from src.repositories.order_item_repository import OrderItemRepository
 from src.repositories.product_repository import ProductRepository
+
 from src.services.customer_generation_service import CustomerGenerationService
 from src.services.product_generation_service import ProductGenerationService
 from src.services.order_generation_service import OrderGenerationService
+from src.services.order_item_generation_service import OrderItemGenerationService
 from src.common.db import get_connection
 
 
@@ -31,22 +34,34 @@ class DataGenerationService:
 
     def generate(self):
 
-        #self._customer_service.generate(10)
+        #self._customer_service.generate(1000)
 
-        #self._product_service.generate(100)
+        #self._product_service.generate(2000)
 
-        customer_ids = []
+        customer_ids = [] # Choosing customers to create orders.
 
         for _ in range(10):
             id = self._customer_service._repository.choose_random_customer_id()
-            print(id)
             customer_ids.append(id)
-        print(customer_ids)
+
+        first_time_allocation = False
+
+        if first_time_allocation:
+            max_order_id = None
+        else:
+            max_order_id = self._order_service._repository.max_order_id()
+
+        
+        
         self._order_service.generate(customer_ids)
 
-        #self._order_item_service.generate()
+        orders = self._order_service._repository.get_orders(max_order_id,first_time_allocation)
 
+        products = self._product_service._repository.select_all_products()
 
+        self._order_item_service.generate(orders,products)
+
+    
 
 
 connection = get_connection()
@@ -63,8 +78,11 @@ order_repository = OrderRepository(connection)
 order_generator = OrderGenerator()
 order_service = OrderGenerationService(order_generator,order_repository)
 
+order_item_repository = OrderItemRepository(connection)
+order_item_generator = OrderItemGenerator()
+order_item_service = OrderItemGenerationService(order_item_generator,order_item_repository)
 
-data_generation = DataGenerationService(customer_service,product_service,order_service,...)
+data_generation = DataGenerationService(customer_service,product_service,order_service,order_item_service)
 
 data_generation.generate()
 

@@ -18,8 +18,8 @@ class OrderGenerator(BaseGenerator):
         self.fake = Faker()
 
     def generate_order_count(self): # This function will generate a random integer. 
-        r = random.random()     # Rationale behind this: 50 percent of the customers will buy only one thing, 35 percent will buy between 2 and 5, 12 percent will buy between 6 to 20.
-                                # and only 3 percent will buy between 21 to 100.
+        r = random.random()     # Rationale behind this: 50 percent of the customers will have only one order, 35 percent will have between 2 and 5, 12 percent will have  between 6 to 20.
+                                # and only 3 percent will have between 21 to 100.
         if r < 0.50:
             return 1
 

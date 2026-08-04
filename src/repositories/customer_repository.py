@@ -17,8 +17,8 @@ class CustomerRepository(BaseRepository):
         "created_at",
     ]
 
-    def choose_random_customer_id(self):
-
+    def choose_random_customer_id(self): #This is used to randomly select customer id. In the data generation part, it's called in a loop.
+                                         # Then those ids are used to create orders. 
         random_id = sql.SQL("""
                     SELECT customer_id FROM customers ORDER BY RANDOM() limit 1
                     """)

@@ -31,6 +31,7 @@ class BaseRepository(ABC):
         
         with self.connection.cursor() as cursor:
             cursor.executemany(query, rows)
+            
 
         self.connection.commit()
 

@@ -4,14 +4,10 @@ class OrderItemGenerationService:
         self._generator = order_item_generator
         self._repository = order_item_repository
 
-    def generate(self):
+    def generate(self,orders,products):
     
-            orders= ...
-            products= ...
-
-
             order_items = self._generator.generate(orders,products)
     
             self._repository.save_many(order_items)
     
-            return orders
+            return order_items
