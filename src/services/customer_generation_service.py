@@ -1,4 +1,6 @@
+import logging
 
+logger = logging.getLogger(__name__)
 
 class CustomerGenerationService:
 
@@ -9,7 +11,11 @@ class CustomerGenerationService:
 
     def generate(self, count: int):
 
+        logger.info("Generating %s customers",count)
+
         customers = self._generator.generate(count)
+
+        logger.info("Generated %s customers",count)
 
         self._repository.save_many(customers)
 

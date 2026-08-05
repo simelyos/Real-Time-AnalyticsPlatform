@@ -1,4 +1,6 @@
+import logging
 
+logger = logging.getLogger(__name__)
 
 class ProductGenerationService:
 
@@ -12,7 +14,11 @@ class ProductGenerationService:
 
     def generate(self, count: int):
 
+        logger.info("Generating %s products",count)
+        
         products = self._generator.generate(count)
+
+        logger.info("Generated %s products.",count)
 
         self._repository.save_many(products)
 

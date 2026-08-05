@@ -2,6 +2,10 @@ from abc import ABC
 from psycopg import Connection
 from psycopg import sql
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class BaseRepository(ABC):
 
     table_name: str
@@ -41,5 +45,10 @@ class BaseRepository(ABC):
             model.to_tuple()
             for model in models
         ]
+        try:
+            self.bulk_insert(rows)
+            logger.info("%s saved successfully.",self.table_name)
+        except Exception as exception:
+            logger.error("Failed to save %s. Following error occurred: %s",self.table_name,exception)
 
-        self.bulk_insert(rows)
+        

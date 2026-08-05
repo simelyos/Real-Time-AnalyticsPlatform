@@ -14,7 +14,11 @@ from src.services.order_generation_service import OrderGenerationService
 from src.services.order_item_generation_service import OrderItemGenerationService
 from src.common.db import get_connection
 
+from src.common.logger import configure_logger
+
 import argparse
+
+configure_logger()
 
 connection = get_connection()
 
