@@ -17,6 +17,25 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
 
+
+
+
+
+  analytics-postgres:
+    image: postgres:latest
+
+    container_name: analytics-db
+
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: analytics
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_data_analytics:/var/lib/postgresql
 volumes:
   postgres_data:
-    
+  postgres_data_analytics:  
