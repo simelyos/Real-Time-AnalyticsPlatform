@@ -25,6 +25,8 @@ services:
     image: postgres:latest
 
     container_name: analytics-db
+    
+    restart: unless-stopped
 
     environment: 
       POSTGRES_USER: postgres
