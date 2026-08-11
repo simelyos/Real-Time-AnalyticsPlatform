@@ -1,3 +1,6 @@
+import json
+
+from confluent_kafka import Producer
 from src.generator.customer_generator import CustomerGenerator
 from src.generator.order_generator import OrderGenerator
 from src.generator.order_item_generator import OrderItemGenerator
@@ -18,6 +21,24 @@ from src.common.logger import configure_logger
 
 import time
 import random
+
+
+
+class KafkaProducer:
+
+    def __init__(self, bootstrap_servers: str):
+        self._producer = Producer({
+            "bootstrap.servers": bootstrap_servers,
+        })
+
+    def publish(self, topic: str, message: dict) -> None:
+        self._producer.produce(
+            topic=topic,
+            value=json.dumps(message).encode("utf-8"),
+        )
+
+        self._producer.flush()
+
 
 configure_logger()
 
@@ -41,16 +62,18 @@ order_item_service = OrderItemGenerationService(order_item_generator,order_item_
 
 
 
+
+
+
 def order_operation(): # order_items are followed by orders creation. 
-        order_count = 1
         customer_ids = [] 
         
-        for _ in range(order_count):
-            id = customer_service._repository.choose_random_customer_id()
-            customer_ids.append(id)
-            max_order_id = order_service._repository.max_order_id() 
+        
+        id = customer_service._repository.choose_random_customer_id()
+        customer_ids.append(id)
+        max_order_id = order_service._repository.max_order_id() 
 
-        order_service.generate(customer_ids)
+        order_service._generator.generate(customer_ids)
         orders = order_service._repository.get_orders(max_order_id,False)
         products = product_service._repository.select_all_products()
         order_item_service.generate(orders,products)
