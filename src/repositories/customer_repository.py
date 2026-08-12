@@ -34,4 +34,18 @@ class CustomerRepository(BaseRepository):
         return returned_id
 
 
+    def select_all_customers(self):
+       
+        query = sql.SQL("""
+                SELECT * FROM customers
+                """)
         
+        
+        with self.connection.cursor() as cursor:
+            cursor_result=cursor.execute(query)
+            products_list = cursor_result.fetchall()
+
+        
+        returned_products_list = products_list
+      
+        return returned_products_list
