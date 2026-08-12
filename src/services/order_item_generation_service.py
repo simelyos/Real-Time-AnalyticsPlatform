@@ -10,12 +10,13 @@ class OrderItemGenerationService:
 
     def generate(self,orders,products):
 
-            logger.info("Generating order items for these orders : %s",orders["order_id"])
+            print(orders)
+            logger.info("Generating order items for these orders : %s",orders)
 
             order_items = self._generator.generate(orders,products)
 
 
-            logger.info("Generated order items for these orders : %s",orders["order_id"])
+            logger.info("Generated order items for these orders : %s",orders)
 
             self._repository.save_many(order_items)
     
