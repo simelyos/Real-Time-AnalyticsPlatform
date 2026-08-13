@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Real-Time Sales Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Real-Time Sales Dashboard</h1>
+            <p>Kafka streaming analytics</p>
+        </header>
+
+
+        <!-- Summary -->
+
+        <section class="summary">
+
+            <div class="card">
+                <h3>Total Orders</h3>
+                <p id="total-orders">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Items</h3>
+                <p id="total-items">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p id="total-revenue">$0.00</p>
+            </div>
+
+        </section>
+
+
+        <!-- Main content -->
+
+        <section class="grid">
+
+            <!-- Top products -->
+
+            <div class="panel">
+
+                <h2>Top Products</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Items</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="products-table">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Top customers -->
+
+            <div class="panel">
+
+                <h2>Top Customers</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Items</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="customers-table">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Recent purchases -->
+
+        <section class="panel">
+
+            <h2>Recent Purchases</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                        <th>Time</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="recent-table">
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </div>
+
+    <script src="/static/app.js"></script>
+
+</body>
+
+</html>
