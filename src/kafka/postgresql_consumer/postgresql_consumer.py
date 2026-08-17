@@ -63,7 +63,7 @@ class OrderItemConsumer:
             while True:
                 message = self._consumer.poll(1.0)
                 if message is not None:
-                    print(message.value())
+                    print(message.value().decode("utf-8"))
                 
 
                 if message is None:

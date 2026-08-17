@@ -22,7 +22,16 @@ from src.repositories.customer_repository import CustomerRepository
 from src.repositories.product_repository import ProductRepository
 
 from src.common.db import get_connection
+from src.common.db import get_connection_analytics
 
+from src.analytics.service import AnalyticsService
+from src.analytics.repository import AnalyticsRepository
+
+analytics_connection = get_connection_analytics()
+
+
+analytics_repository = AnalyticsRepository(analytics_connection)
+analytics_service = AnalyticsService(analytics_repository)
 
 connection = get_connection()
 
@@ -154,3 +163,34 @@ def get_recent_events(request: Request):
 
     return result
 
+
+
+app.mount(
+    "/static",
+    StaticFiles(directory="src/analytics/static"),
+    name="analytics-static",
+)
+@app.get("/analytics")
+def analytics_dashboard():
+    return FileResponse(
+        "src/analytics/static/index.html"
+    )
+
+@app.get("/api/analytics/summary")
+def analytics_summary():
+    return analytics_service.get_summary()
+
+
+@app.get("/api/analytics/products")
+def analytics_products():
+    return analytics_service.get_top_products()
+
+
+@app.get("/api/analytics/customers")
+def analytics_customers():
+    return analytics_service.get_top_customers()
+
+
+@app.get("/api/analytics/categories")
+def analytics_categories():
+    return analytics_service.get_category_sales()

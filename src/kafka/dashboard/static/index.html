@@ -3,133 +3,220 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Real-Time Sales Dashboard</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Real-Time Dashboard</title>
 
     <link
         rel="stylesheet"
-        href="/static/style.css"
+        href="/static/realtime/style.css"
     >
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="dashboard">
 
-        <header>
-            <h1>Real-Time Sales Dashboard</h1>
-            <p>Kafka streaming analytics</p>
-        </header>
+        <!-- Sidebar -->
+        <aside class="sidebar">
 
-
-        <!-- Summary -->
-
-        <section class="summary">
-
-            <div class="card">
-                <h3>Total Orders</h3>
-                <p id="total-orders">0</p>
+            <div class="logo">
+                Data Platform
             </div>
 
-            <div class="card">
-                <h3>Total Items</h3>
-                <p id="total-items">0</p>
-            </div>
+            <nav>
 
-            <div class="card">
-                <h3>Total Revenue</h3>
-                <p id="total-revenue">$0.00</p>
-            </div>
+                <a
+                    href="/"
+                    class="active"
+                >
+                    Real-Time
+                </a>
 
-        </section>
+                <a href="/analytics">
+                    Analytics
+                </a>
 
+            </nav>
 
-        <!-- Main content -->
-
-        <section class="grid">
-
-            <!-- Top products -->
-
-            <div class="panel">
-
-                <h2>Top Products</h2>
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Items</th>
-                            <th>Revenue</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="products-table">
-                    </tbody>
-
-                </table>
-
-            </div>
+        </aside>
 
 
-            <!-- Top customers -->
+        <!-- Main -->
+        <main class="main">
 
-            <div class="panel">
+            <header class="header">
 
-                <h2>Top Customers</h2>
+                <div>
+                    <h1>Real-Time Dashboard</h1>
 
-                <table>
+                    <p>
+                        Live order and event metrics
+                    </p>
+                </div>
 
-                    <thead>
-                        <tr>
-                            <th>Customer ID</th>
-                            <th>Items</th>
-                            <th>Revenue</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="customers-table">
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
+            </header>
 
 
-        <!-- Recent purchases -->
+            <!-- Your existing real-time content goes here -->
 
-        <section class="panel">
+            <!-- KPI cards -->
+            <section class="metrics-grid">
 
-            <h2>Recent Purchases</h2>
+                <div class="card metric-card">
 
-            <table>
+                    <div class="metric-label">
+                        Total Orders
+                    </div>
 
-                <thead>
+                    <div
+                        id="total-orders"
+                        class="metric-value"
+                    >
+                        0
+                    </div>
 
-                    <tr>
-                        <th>Customer</th>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Total</th>
-                        <th>Time</th>
-                    </tr>
+                </div>
 
-                </thead>
 
-                <tbody id="recent-table">
-                </tbody>
+                <div class="card metric-card">
 
-            </table>
+                    <div class="metric-label">
+                        Total Items
+                    </div>
 
-        </section>
+                    <div
+                        id="total-items"
+                        class="metric-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="card metric-card">
+
+                    <div class="metric-label">
+                        Total Revenue
+                    </div>
+
+                    <div
+                        id="total-revenue"
+                        class="metric-value"
+                    >
+                        $0.00
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Existing tables -->
+            <section class="content-grid">
+
+                <div class="card table-card">
+
+                    <div class="card-header">
+                        <h2>Top Products</h2>
+                        <p>Live product activity</p>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="products-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card table-card">
+
+                    <div class="card-header">
+                        <h2>Top Customers</h2>
+                        <p>Live customer activity</p>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Quantity</th>
+                                    <th>Revenue</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="customers-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card table-card full-width">
+
+                    <div class="card-header">
+                        <h2>Recent Events</h2>
+                        <p>Latest order items</p>
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recent-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
 
     </div>
 
-    <script src="/static/app.js"></script>
+
+    <script src="/static/realtime/app.js"></script>
 
 </body>
 
