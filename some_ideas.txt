@@ -1,2 +1,0 @@
-When the project evolves think about the scalability. What happens if lots of SQL queries arrive at the same time.
-Also the database mirroring( ? ) and stuff. What are the space occupations? Would a load balancer work ? Adding Kubernetes?
