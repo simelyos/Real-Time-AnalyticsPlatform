@@ -1,0 +1,361 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    background: #f5f7fa;
+
+    color: #1f2937;
+}
+
+
+/* =========================
+   Layout
+   ========================= */
+
+.dashboard {
+    display: flex;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   Sidebar
+   ========================= */
+
+.sidebar {
+    width: 230px;
+
+    background: #111827;
+
+    color: white;
+
+    padding: 24px 16px;
+
+    flex-shrink: 0;
+}
+
+
+.logo {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    padding: 0 12px;
+
+    margin-bottom: 40px;
+}
+
+
+.sidebar nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.sidebar a {
+    text-decoration: none;
+
+    color: #9ca3af;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+
+.sidebar a:hover {
+    background: #1f2937;
+
+    color: white;
+}
+
+
+.sidebar a.active {
+    background: #374151;
+
+    color: white;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   Main
+   ========================= */
+
+.main {
+    flex: 1;
+
+    padding: 32px;
+
+    min-width: 0;
+}
+
+
+.header {
+    margin-bottom: 30px;
+}
+
+
+.header h1 {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 6px;
+}
+
+
+.header p {
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   Cards
+   ========================= */
+
+.card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================
+   KPI
+   ========================= */
+
+.kpi-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+
+.kpi-card {
+    padding: 22px;
+}
+
+
+.kpi-label {
+    color: #6b7280;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+
+
+.kpi-value {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #111827;
+}
+
+
+/* =========================
+   Content
+   ========================= */
+
+.content-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+.table-card {
+    overflow: hidden;
+}
+
+
+.card-header {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.card-header h2 {
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+
+.card-header p {
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   Tables
+   ========================= */
+
+.table-container {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+thead {
+    background: #f9fafb;
+}
+
+
+th {
+    text-align: left;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: #6b7280;
+
+    padding: 12px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    white-space: nowrap;
+}
+
+
+td {
+    padding: 14px 20px;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 1100px) {
+
+    .kpi-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+
+        padding: 16px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .sidebar nav {
+        flex-direction: row;
+    }
+
+    .sidebar a {
+        flex: 1;
+
+        text-align: center;
+    }
+
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main {
+        padding: 16px;
+    }
+
+}

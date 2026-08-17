@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Analytics Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/analytics/style.css"
+    >
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                Data Platform
+            </div>
+
+            <nav>
+
+                <a href="/">
+                    Real-Time
+                </a>
+
+                <a
+                    href="/analytics"
+                    class="active"
+                >
+                    Analytics
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- Main content -->
+        <main class="main">
+
+            <header class="header">
+
+                <div>
+                    <h1>Analytics</h1>
+
+                    <p>
+                        Business performance overview
+                    </p>
+                </div>
+
+            </header>
+
+
+            <!-- KPI cards -->
+            <section class="kpi-grid">
+
+                <div class="card kpi-card">
+
+                    <div class="kpi-label">
+                        Total Orders
+                    </div>
+
+                    <div
+                        id="total-orders"
+                        class="kpi-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="card kpi-card">
+
+                    <div class="kpi-label">
+                        Items Sold
+                    </div>
+
+                    <div
+                        id="total-items"
+                        class="kpi-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="card kpi-card">
+
+                    <div class="kpi-label">
+                        Total Revenue
+                    </div>
+
+                    <div
+                        id="total-revenue"
+                        class="kpi-value"
+                    >
+                        $0.00
+                    </div>
+
+                </div>
+
+
+                <div class="card kpi-card">
+
+                    <div class="kpi-label">
+                        Average Order Value
+                    </div>
+
+                    <div
+                        id="average-order-value"
+                        class="kpi-value"
+                    >
+                        $0.00
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Tables -->
+            <section class="content-grid">
+
+
+                <!-- Products -->
+                <div class="card table-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Top Products</h2>
+
+                            <p>
+                                Best performing products
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Revenue</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="products-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Customers -->
+                <div class="card table-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Top Customers</h2>
+
+                            <p>
+                                Highest spending customers
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Orders</th>
+                                    <th>Spending</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="customers-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Categories -->
+                <div class="card table-card full-width">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Sales by Category</h2>
+
+                            <p>
+                                Revenue and quantity by category
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Quantity Sold</th>
+                                    <th>Revenue</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="categories-table">
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="/static/analytics/app.js"></script>
+
+</body>
+
+</html>
