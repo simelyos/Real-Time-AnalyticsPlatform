@@ -158,24 +158,24 @@ The dashboard queries the warehouse tables rather than the operational database.
 Start Kafka and PostgreSQL using Docker Compose:
 
 '''bash
-docker compose up -d'''
+$ docker compose up -d'''
 
 2. Start the Kafka producer
 
 Run the producer application:
 
 '''bash
-python3 -m src.kafka.producer'''
+$ python3 -m src.kafka.producer'''
 
 3. Start the PostgreSQL Consumer
 Run the Kafka consumer.
 
 '''bash
-python3 -m src.kafka.postgresql_consumer.postgresql_consumer'''
+$ python3 -m src.kafka.postgresql_consumer.postgresql_consumer'''
 
 4. Start the dashboard
 
 '''bash
-uvicorn src.kafka.dashboard.main:app --reload'''
+$ uvicorn src.kafka.dashboard.main:app --reload'''
 
 
