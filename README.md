@@ -11,7 +11,7 @@ and FastAPI/WebSockets for exposing real-time metrics and analytics.
 
 ![Architecture](docs/Architecture.png)
 
-#Project Goals
+# Project Goals
 
 The main goals of the project are to demonstrate:
 
@@ -28,10 +28,10 @@ The main goals of the project are to demonstrate:
 - Data validation and testing
 - Separation between operational and analytical workloads
 
-#Tech Stack
+# Tech Stack
 
 - **Python**: Application and data pipeline logic.
-- **PostgreSQL **: Operational and Analytical storage.
+- **PostgreSQL**: Operational and Analytical storage.
 - **Apache Kafka**: Event streaming.
 - **FastAPI**: API and dashboard backend.
 - **WebSockets**: Real-time dashboard updates.
@@ -41,8 +41,8 @@ The main goals of the project are to demonstrate:
 - **HTML/CSS/JavaScript**: Dashboard interfaces.
 
 
-#Data Flow
-##Order Generation
+# Data Flow
+## Order Generation
 
 The project generates order activity and stores the required reference data such as:
 
@@ -53,7 +53,7 @@ The project generates order activity and stores the required reference data such
 
 Orders are created first so that valid order_id values exist before order items are generated.
 
-#Kafka Producer
+# Kafka Producer
 
 The producer converts order-item information into JSON events and publishes them to Kafka.
 
@@ -66,7 +66,7 @@ The producer is responsible for:
 
 Kafka acts as the event broker between the producer and downstream consumers.
 
-#Kafka Consumer
+# Kafka Consumer
 
 The PostgreSQL consumer subscribes to the Kafka topic and processes incoming events.
 
@@ -81,7 +81,7 @@ The consumer:
 The producer and consumer are independent processes, allowing Kafka to decouple event production from database ingestion.
 
 
-#Operational Database
+# Operational Database
 
 The operational PostgreSQL database stores the incoming order-item data.
 
@@ -90,7 +90,7 @@ This database is designed around the needs of the operational application rather
 The Kafka consumer writes incoming events into this database.
 
 
-#Change Data Capture
+# Change Data Capture
 
 Changes from the operational PostgreSQL database are replicated to a separate analytics PostgreSQL database using PostgreSQL's built-in Change Data Capture capabilities.
 
@@ -98,7 +98,7 @@ Kafka is intentionally not used for this part of the architecture.
 
 This separates the operational workload from analytical workloads.
 
-#Analytics Warehouse
+# Analytics Warehouse
 
 The analytics database contains a warehouse schema with analytical tables.
 The analytical schema is designed to make reporting and aggregation easier than querying the operational database directly.
@@ -111,7 +111,7 @@ Example analytical queries include:
 - Customer purchasing activity
 - Order-item statistics
 
-#Real-Time Dashboard
+# Real-Time Dashboard
 
 The real-time dashboard consumes metrics generated from incoming Kafka events.
 
@@ -133,7 +133,7 @@ The dashboard displays information such as:
 - Recent order-item events
 
 
-#Analytics Dashboard
+# Analytics Dashboard
 
 The analytics dashboard is separate from the real-time dashboard.
 
@@ -152,7 +152,7 @@ Examples include:
 The dashboard queries the warehouse tables rather than the operational database.
 
 
-#Running the Project 
+# Running the Project 
 1. Start infrastructure
 
 Start Kafka and PostgreSQL using Docker Compose:
