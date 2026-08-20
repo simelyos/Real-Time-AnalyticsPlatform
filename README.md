@@ -9,4 +9,4 @@ and FastAPI/WebSockets for exposing real-time metrics and analytics.
 ---
 
 
-!(~/Desktop/Architecture.png)
+![Architecture](docs/Architecture.png)
